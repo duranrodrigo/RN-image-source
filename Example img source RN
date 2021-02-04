@@ -1,0 +1,22 @@
+<Image
+  source={{ uri: 'asset:/app_icon.png' }}
+  style={{ width: 40, height: 40 }}
+/>// GOOD
+<Image source={{uri: 'https://reactjs.org/logo-og.png'}}
+       style={{width: 400, height: 400}} />
+
+// BAD
+<Image source={{uri: 'https://reactjs.org/logo-og.png'}} />// GOOD
+<Image source={require('./my-icon.png')} />;
+
+// BAD
+var icon = this.props.active
+  ? 'my-icon-active'
+  : 'my-icon-inactive';
+<Image source={require('./' + icon + '.png')} />;
+
+// GOOD
+var icon = this.props.active
+  ? require('./my-icon-active.png')
+  : require('./my-icon-inactive.png');
+<Image source={icon} />;
